@@ -20,17 +20,17 @@ pipeline {
         stage('Test') {
             steps {
                 // Runs a shell testing script
-                sh 'jenkins/scripts/test.sh'
+                sh '/jenkins/scripts/test.sh'
             }
         }
         stage('Deliver') {
             steps {
                 // Runs a shell delivery script
-                sh 'jenkins/scripts/deliver.sh'
+                sh './jenkins/scripts/deliver.sh'
 
                 // Pauses the running build and prompts the user (with a custom message) to proceed or abort.
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh 'jenkins/scripts/kill.sh'
+                sh './jenkins/scripts/kill.sh'
             }
         }
     }
