@@ -19,17 +19,20 @@ pipeline {
         }
         stage('Test') {
             steps {
+                sh "chmod +x -R ${env.WORKSPACE}"
                 // Runs a shell testing script
-                sh '/jenkins/scripts/test.sh'
+                sh './jenkins/scripts/test.sh'
             }
         }
         stage('Deliver') {
             steps {
+                sh "chmod +x -R ${env.WORKSPACE}"
                 // Runs a shell delivery script
                 sh './jenkins/scripts/deliver.sh'
 
                 // Pauses the running build and prompts the user (with a custom message) to proceed or abort.
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
+                sh "chmod +x -R ${env.WORKSPACE}"
                 sh './jenkins/scripts/kill.sh'
             }
         }
