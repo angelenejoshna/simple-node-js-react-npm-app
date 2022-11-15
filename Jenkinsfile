@@ -19,9 +19,9 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh "chmod +x ..../test.sh"
-                // Runs a shell testing script
-                sh './jenkins/scripts/test.sh'
+                sh 'chmod +x ./jenkins/scripts/test.sh'
+            // Runs a shell testing script
+            // sh './jenkins/scripts/test.sh'
             }
         }
         stage('Deliver') {
