@@ -19,9 +19,9 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh "chmod +x 'C:/Users/Angelene Joshna/Documents/GitHub/simple-node-js-react-npm-app/jenkins/scripts/test.sh'"
-            // Runs a shell testing script
-            // sh './jenkins/scripts/test.sh'
+                sh "chmod +x 'C:/Users/Angelene Joshna/Documents/GitHub/simple-node-js-react-npm-app/jenkins/scripts'"
+                // Runs a shell testing script
+                sh 'test.sh'
             }
         }
         stage('Deliver') {
