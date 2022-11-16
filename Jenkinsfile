@@ -20,17 +20,17 @@ pipeline {
         stage('Test') {
             steps {
                 // Runs a shell testing script
-                sh 'chmod +x ./jenkins/test.sh'
+                sh 'chmod +x ./jenkins/scripts/test.sh'
             }
         }
         stage('Deliver') {
             steps {
                 // Runs a shell delivery script
-                sh 'chmod +x ./jenkins/deliver.sh'
+                sh 'chmod +x ./jenkins/scripts/deliver.sh'
 
                 // Pauses the running build and prompts the user (with a custom message) to proceed or abort.
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh 'chmod +x ./jenkins/kill.sh'
+                sh 'chmod +x ./jenkins/scripts/kill.sh'
             }
         }
     }
