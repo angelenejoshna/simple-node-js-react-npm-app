@@ -19,21 +19,18 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh "chmod +x 'C:/Users/Angelene Joshna/Documents/GitHub/simple-node-js-react-npm-app/jenkins/scripts'"
                 // Runs a shell testing script
-                sh 'test.sh'
+                sh 'chmod +x ./jenkins/test.sh'
             }
         }
         stage('Deliver') {
             steps {
-                sh "chmod +x -R ${env.WORKSPACE}"
                 // Runs a shell delivery script
-                sh './jenkins/scripts/deliver.sh'
+                sh 'chmod +x ./jenkins/deliver.sh'
 
                 // Pauses the running build and prompts the user (with a custom message) to proceed or abort.
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh "chmod +x -R ${env.WORKSPACE}"
-                sh './jenkins/scripts/kill.sh'
+                sh 'chmod +x ./jenkins/kill.sh'
             }
         }
     }
